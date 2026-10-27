@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDISTYLE </title>
+    <link rel ="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  </head>
+<body>
+
+<section id="header">
+
+  <a href="#"><img src ="image/logo3.jpg"    width="70px"></a>
+  
+<div>
+<ul id ="navbar">
+  <li> <a  class ="active" href ="home.html">Home</a></li>
+  <li> <a  href ="product.html">Product</a></li>
+  <li> <a  href ="about.html">About</a></li>
+  <li> <a  href ="contact.html">Contact</a></li>
+  <li> <a  href ="login.html">Login</a></li>
+<a href="cart.html"><i class='bx bxs-cart-alt' ></i></a>
+
+</ul>
+
+</div>
+
+</section>
+<section id ="prodetails" class="section-p1">
+<div class ="single-pro-image">
+<img src="image/banarasi red.jpg" width="100%" id ="MainImg" alt="">
+ <div class="small-img-group">
+  <div class ="small-img-col" >
+    <img src="image/banarasi red.jpg" width="100%" class="small-img" alt="">
+  </div>
+  <div class ="small-img-col" >
+    <img src="image/banarasi blue.png" width="100%" class="small-img" alt="">
+  </div>
+  <div class ="small-img-col" >
+    <img src="image/banarasi purple.png" width="100%" class="small-img" alt="">
+  </div>
+  <div class ="small-img-col" >
+    <img src="image/baranasi green.png" width="100%" class="small-img" alt="">
+  </div>
+ </div>
+</div>
+<div class="single-pro-details">
+  <h6>home/Banarasi saree</h6>
+  <h4>Banarasi Saree – Elegant Traditional Indian Wear</h4>
+  <h2>$100.00</h2>
+  <select>
+    <option>Select Size</option>
+    <option>Large</option>
+    <option>Small</option>
+    <option>Medium</option>
+    <option>XL</option>
+    <option>XXL</option>
+    
+  </select>
+  <input type="number" value="1">
+  <button class="normal" onclick="addCurrentProductToCart()">Add to Cart</button>
+
+
+  <h4>Product Details</h4>
+  <span>This Banarasi saree is woven with rich silk and adorned with intricate golden zari work. Perfect for weddings, festivals, or elegant occasions, it reflects India's timeless craftsmanship. Available in multiple colors like red, green, royal blue, and purple.</span>
+</div>
+<input type="hidden" id="product-id" value="p1">
+<input type="hidden" id="product-name" value="Banarasi Saree">
+<input type="hidden" id="product-price" value="100">
+<input type="hidden" id="product-image" value="image/banarasi red.jpg">
+
+
+</section>
+<section id ="product1" class ="section-p1">
+  <h2>Featured Products</h2>
+  <p>Step into the charm of classic Indian fashion</p>
+  <div class="pro-container">
+    <div class="pro">
+      <img src="image/high low pink.jpg"  onclick="window.location.href='desc9.html';" >
+      <div class ="des">
+      <h5>High Low Kurta</h5>
+      <div class="star">
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+        <i class='bx bxs-star'></i>
+      
+      </div>
+      <h4>$40</h4>
+      </div>
+      <a href="#" onclick="addToCart('p9', 'High Low Kurta', 40, 'image/high low pink.jpg'); return false;"><i class="bx bx-cart cart"></i></a>
+       </div>
+        
+        <div class="pro">
+          <img src="image/kaftan red.jpg" onclick="window.location.href='desc10.html';"  >
+          <div class ="des">
+          <h5>Kaftan Kurta</h5>
+          <div class="star">
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+          
+          </div>
+          <h4>$35</h4>
+          </div>
+          <a href="#" onclick="addToCart('p10', 'Kaftan Kurta', 35, 'image/kaftan red.jpg'); return false;"><i class="bx bx-cart cart"></i></a>
+           </div>
+           <div class="pro">
+            <img src="image/jacket style red.jpg" onclick="window.location.href='desc11.html';"  >
+            <div class ="des">
+            <h5>Jacket Style Kurta</h5>
+            <div class="star">
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+              <i class='bx bxs-star'></i>
+            
+            </div>
+            <h4>$50</h4>
+            </div>
+            <a href="#" onclick="addToCart('p11', 'Jacket Style Kurta', 50, 'image/jacket style red.jpg'); return false;"><i class="bx bx-cart cart"></i></a>
+             </div>
+            
+               <div class="pro">
+                <img src="image/straight cut pink.jpg"  onclick="window.location.href='desc12.html';" >
+                <div class ="des">
+                <h5>Straight Cut Kurta</h5>
+                <div class="star">
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star'></i>
+                  <i class='bx bxs-star'></i>
+                
+                </div>
+                <h4>$30</h4>
+                </div>
+                <a href="#" onclick="addToCart('p12', 'Straight Cut Kurta', 30, 'image/straight cut pink.jpg'); return false;"><i class="bx bx-cart cart"></i></a>
+                 </div>
+           
+             
+              
+                
+               
+  </div>
+</section>
+
+
+
+<footer class="section-p1">
+<div class="col">
+  <img  class ="logo"src="image/logo3.jpg" width="65px">
+  <h4>Contact</h4>
+  <p><strong>Adress:</strong>  107 Rue Al Bakri Casblanca 20250</p>
+<p><strong>Phone:</strong>+212 5224 50303</p>
+<p><strong>Hours:</strong>10:00 -18:00, Mon -sat</p>
+<div class="follow">
+  <h4>Follow us</h4>
+<div class="icon">
+<i class='bx bxl-facebook' ></i>
+<i class='bx bxl-twitter' ></i>
+<i class='bx bxl-instagram' ></i>
+<i class='bx bxl-pinterest'></i>
+<i class='bx bxl-youtube' ></i>
+</div>
+</div>
+</div>
+<div class="col">
+  <h4>About</h4>
+<a href="#">About Us</a>
+<a href="#">Delivery Information</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms & Conditions</a>
+<a href="#">Contact Us</a>
+</div>
+<div class="col">
+  <h4>My Account</h4>
+<a href="#">Sign In</a>
+<a href="#">View Cart</a>
+<a href="#">My Wishlist</a>
+<a href="#">Track My Order</a>
+<a href="#">Help</a>
+</div>
+<div class ="col install">
+  <h4>Install App</h4>
+  <p>From App store or Google Play</p>
+<div class="row">
+    <img src="image/app-store.png" width="200px">
+<img src="image/play-store.png" width="200px">
+</div>
+  <p>Secured Payement Gateways</p>
+  <img src="image/payment-img.png" alt="">
+
+</div>
+<div class="copyright">
+  <p> &copy;2025,Indistyle Ecommerce website</p>
+</div>
+
+</footer>
+
+<script>
+  var MainImg = document.getElementById("MainImg");
+  var smallimg = document.getElementsByClassName("small-img");
+  smallimg[0].onclick =function(){
+    MainImg.src =smallimg[0].src;
+  }
+   smallimg[1].onclick =function(){
+    MainImg.src =smallimg[1].src;
+  }
+  smallimg[2].onclick =function(){
+    MainImg.src =smallimg[2].src;
+  }
+  smallimg[3].onclick =function(){
+    MainImg.src =smallimg[3].src;
+  }
+  
+</script>
+    <script src="script.js"></script>
+
+
+
+</body>
+</html>

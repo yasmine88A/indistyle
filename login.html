@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>INDISTYLE </title>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+</head>
+<body>
+<section id="header">
+
+<a href="#"><img src="image/logo3.jpg" width="70px"/></a>
+
+<div>
+<ul id="navbar">
+ 
+
+<li> <a  href="home.html">Home</a></li>
+<li> <a href="product.html">Product</a></li>
+<li> <a href="about.html">About</a></li>
+<li> <a href="contact.html">Contact</a></li>
+<li> <a class="active"href="login.html">Login</a></li>
+<a href="cart.html"><i class="bx bxs-cart-alt"></i></a>
+</ul>
+</div>
+</section>
+<section id="page-header">
+<h2>#Login to IndiStyle</h2>
+<p>Access your IndiStyle account to explore and shop your favorite traditional looks. </p>
+</section>
+<section class="section-p1" id="about-head">
+<img alt="" src="image/homemodel-Photoroom.png"/>
+<div>
+<div class="account-page">
+<div class="container">
+<div class="row">
+<div>
+<div class="form-container">
+<div class="form-btn">
+<span onclick="login()">Login</span>
+<span onclick="register()">Register</span>
+<hr id="Indicator"/>
+</div>
+<form id="LoginForm" onsubmit="loginUser(); return false;">
+  <input id="login-username" type="text" placeholder="username" />
+  <input id="login-password" type="password" placeholder="password" />
+  <button type="submit" class="btn">Login</button>
+</form>
+
+<form  id="RegForm" onsubmit="registerUser(); return false;">
+  <input id="register-username" type="text" placeholder="username" />
+  <input id="register-email" type="email" placeholder="email" />
+  <input id="register-password" type="password" placeholder="password" />
+  <button type="submit" class="btn">Register</button>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<footer class="section-p1">
+<div class="col">
+<img class="logo" src="image/logo3.jpg" width="65px"/>
+<h4>Contact</h4>
+<p><strong>Adress:</strong>  107 Rue Al Bakri Casblanca 20250</p>
+<p><strong>Phone:</strong>+212 5224 50303</p>
+<p><strong>Hours:</strong>10:00 -18:00, Mon -sat</p>
+<div class="follow">
+<h4>Follow us</h4>
+<div class="icon">
+<i class="bx bxl-facebook"></i>
+<i class="bx bxl-twitter"></i>
+<i class="bx bxl-instagram"></i>
+<i class="bx bxl-pinterest"></i>
+<i class="bx bxl-youtube"></i>
+</div>
+</div>
+</div>
+<div class="col">
+<h4>About</h4>
+<a href="#">About Us</a>
+<a href="#">Delivery Information</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms &amp; Conditions</a>
+<a href="#">Contact Us</a>
+</div>
+<div class="col">
+<h4>My Account</h4>
+<a href="#">Sign In</a>
+<a href="#">View Cart</a>
+<a href="#">My Wishlist</a>
+<a href="#">Track My Order</a>
+<a href="#">Help</a>
+</div>
+<div class="col install">
+<h4>Install App</h4>
+<p>From App store or Google Play</p>
+<div class="row">
+<img src="image/app-store.png" width="200px"/>
+<img src="image/play-store.png" width="200px"/>
+</div>
+<p>Secured Payement Gateways</p>
+<img alt="" src="image/payment-img.png"/>
+</div>
+<div class="copyright">
+<p> ©2025,Indistyle Ecommerce website</p>
+</div>
+</footer>
+<script>
+  var LoginForm=document.getElementById("LoginForm");
+  var RegForm=document.getElementById("RegForm");
+  var Indicator=document.getElementById("Indicator");
+  
+  function register(){
+      RegForm.style.transform="translateX(0px)";
+      LoginForm.style.transform="translateX(0px)";
+      Indicator.style.transform="translateX(100px)"
+  }
+  function login(){
+      RegForm.style.transform="translateX(300px)";
+      LoginForm.style.transform="translateX(300px)";
+      Indicator.style.transform="translateX(0px)";
+  }
+</script>
+
+<script>
+  function registerUser() {
+    const username = RegForm.querySelector('input[placeholder="username"]').value;
+    const email = RegForm.querySelector('input[placeholder="email"]').value;
+    const password = RegForm.querySelector('input[placeholder="password"]').value;
+
+    if (!username || !email || !password) {
+      alert("Please fill in all fields");
+      return;
+    }
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const userExists = users.find(u => u.email === email || u.username === username);
+
+    if (userExists) {
+      alert("User already exists!");
+      return;
+    }
+
+    users.push({ username, email, password });
+    localStorage.setItem("users", JSON.stringify(users));
+    alert("Registration successful!");
+    login(); // switch to login tab
+  }
+
+  function loginUser() {
+    const emailOrUsername = LoginForm.querySelector('input[placeholder="username"]').value;
+    const password = LoginForm.querySelector('input[placeholder="password"]').value;
+
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const matchedUser = users.find(u => (u.username === emailOrUsername || u.email === emailOrUsername) && u.password === password);
+
+    if (matchedUser) {
+      localStorage.setItem("currentUser", JSON.stringify(matchedUser));
+      alert("Login successful!");
+      window.location.href = "home.html"; // ou redirige où tu veux
+    } else {
+      alert("Invalid username or password");
+    }
+  }
+</script>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>INDISTYLE </title>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet"/>
+</head>
+<body>
+<section id="header">
+
+<a href="#"><img src="image/logo3.jpg" width="70px"/></a>
+
+<div>
+<ul id="navbar">
+<li> <a href="home.html">Home</a></li>
+<li> <a href="product.html">Product</a></li>
+<li> <a href="about.html">About</a></li>
+<li> <a href="contact.html">Contact</a></li>
+<li> <a href="login.html">Login</a></li>
+<a href="cart.html"><i class="bx bxs-cart-alt"></i></a>
+</ul>
+</div>
+</section>
+
+<section id="page-header">
+<h2>#Cart </h2>
+<p>Add your coupon code &amp; SAVE up to 70% ! </p>
+</section>
+
+<section class="section-p1" id="cart">
+
+<table width="100%">
+  
+<thead>
+<tr>
+<td>Remove</td>
+<td>Image</td>
+<td>Product</td>
+<td>Price</td>
+<td>Quantity</td>
+<td>Subtotal</td>
+</tr>
+</thead>
+
+<tbody id="cart-items"></tbody>
+</table>
+
+</section>
+
+<section class="section-p1" id="cart-add">
+<div id="coupon">
+<h3>Apply Coupon</h3>
+<div>
+    <input id="coupon-input" placeholder="Enter Your Coupon" type="text"/>
+    <button class="normal" id="apply-coupon-btn">Apply</button>
+    
+</div>
+</div>
+<div id="subtotal">
+<h3>Cart Tolals</h3>
+<table>
+
+
+</table>
+<button class="normal" onclick="goToCheckout()">Proceed to checkout</button>
+
+</div>
+</section>
+<footer class="section-p1">
+<div class="col">
+<img class="logo" src="image/logo3.jpg" width="65px"/>
+<h4>Contact</h4>
+<p><strong>Adress:</strong>  107 Rue Al Bakri Casblanca 20250</p>
+<p><strong>Phone:</strong>+212 5224 50303</p>
+<p><strong>Hours:</strong>10:00 -18:00, Mon -sat</p>
+<div class="follow">
+<h4>Follow us</h4>
+<div class="icon">
+<i class="bx bxl-facebook"></i>
+<i class="bx bxl-twitter"></i>
+<i class="bx bxl-instagram"></i>
+<i class="bx bxl-pinterest"></i>
+<i class="bx bxl-youtube"></i>
+</div>
+</div>
+</div>
+<div class="col">
+<h4>About</h4>
+<a href="#">About Us</a>
+<a href="#">Delivery Information</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms &amp; Conditions</a>
+<a href="#">Contact Us</a>
+</div>
+<div class="col">
+<h4>My Account</h4>
+<a href="#">Sign In</a>
+<a href="#">View Cart</a>
+<a href="#">My Wishlist</a>
+<a href="#">Track My Order</a>
+<a href="#">Help</a>
+</div>
+<div class="col install">
+<h4>Install App</h4>
+<p>From App store or Google Play</p>
+<div class="row">
+<img src="image/app-store.png" width="200px"/>
+<img src="image/play-store.png" width="200px"/>
+</div>
+<p>Secured Payement Gateways</p>
+<img alt="" src="image/payment-img.png"/>
+</div>
+<div class="copyright">
+<p> ©2025,Indistyle Ecommerce website</p>
+</div>
+</footer>
+<script src="script.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const couponInput = document.getElementById("coupon-input");
+      const applyBtn = document.getElementById("apply-coupon-btn");
+  
+      // Afficher le coupon s'il est stocké
+      const savedCoupon = localStorage.getItem("appliedCoupon");
+      if (savedCoupon && couponInput) {
+        couponInput.value = savedCoupon;
+      }
+  
+      // Si on clique sur "Apply"
+      if (applyBtn) {
+        applyBtn.addEventListener("click", () => {
+          const code = couponInput.value.trim();
+          if (code === "") {
+            alert("Please enter a coupon code");
+            return;
+          }
+          localStorage.setItem("appliedCoupon", code);
+          alert("Coupon enregistré : " + code);
+        });
+      }
+  
+      // Si on appuie sur Entrée dans le champ
+      couponInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault(); // éviter le rechargement
+          applyBtn.click(); // simule le clic sur Apply
+        }
+      });
+    });
+  </script>
+  
+  <script>
+    function goToCheckout() {
+  localStorage.removeItem('appliedCoupon'); // Clear the coupon
+  window.location.href = "checkout.html";
+}
+
+    </script>
+    
+  
+<script>displayCart();</script></body>
+</html>

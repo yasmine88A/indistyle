@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Indistyle | Checkout</title>
+  <link rel="stylesheet" href="style.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+
+  <section id="header">
+
+    <a href="#"><img src="image/logo3.jpg" width="70px"/></a>
+    
+    <div>
+    <ul id="navbar">
+    <li> <a href="home.html">Home</a></li>
+    <li> <a href="product.html">Product</a></li>
+    <li> <a href="about.html">About</a></li>
+    <li> <a href="contact.html">Contact</a></li>
+    <li> <a href="login.html">Login</a></li>
+    <a href="cart.html"><i class="bx bxs-cart-alt"></i></a>
+    </ul>
+    </div>
+    </section>
+
+<section id="page-header">
+  <h2>#Checkout</h2>
+  <p>Confirm your order and delivery details!</p>
+</section>
+
+<section class="section-p1" id="checkout">
+  <div id="order-summary">
+    <h3>Your Order</h3>
+    <table id="checkout-cart">
+      <thead>
+        <tr>
+          <td>Product</td>
+          <td>Quantity</td>
+          <td>Subtotal</td>
+        </tr>
+      </thead>
+      <tbody id="checkout-items">
+        <!-- Products will be inserted here by JS -->
+      </tbody>
+    </table>
+  </div>
+
+  <div id="customer-info">
+    <h3>Delivery Information</h3>
+    <form id="checkout-form">
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="text" id="address" placeholder="Address" required>
+      <input type="text" id="phone" placeholder="Phone Number" required>
+    
+      <select id="payment-method" required>
+        <option value="">Select Payment Method</option>
+        <option value="cash">Cash on Delivery</option>
+        <option value="card">Credit/Debit Card</option>
+        <option value="paypal">PayPal</option>
+      </select>
+    
+      <button class="normal" type="submit">Confirm Order</button>
+    </form>
+    
+  </div>
+</section>
+
+<footer class="section-p1">
+    <div class="col">
+    <img class="logo" src="image/logo3.jpg" width="65px"/>
+    <h4>Contact</h4>
+    <p><strong>Adress:</strong>  107 Rue Al Bakri Casblanca 20250</p>
+    <p><strong>Phone:</strong>+212 5224 50303</p>
+    <p><strong>Hours:</strong>10:00 -18:00, Mon -sat</p>
+    <div class="follow">
+    <h4>Follow us</h4>
+    <div class="icon">
+    <i class="bx bxl-facebook"></i>
+    <i class="bx bxl-twitter"></i>
+    <i class="bx bxl-instagram"></i>
+    <i class="bx bxl-pinterest"></i>
+    <i class="bx bxl-youtube"></i>
+    </div>
+    </div>
+    </div>
+    <div class="col">
+    <h4>About</h4>
+    <a href="#">About Us</a>
+    <a href="#">Delivery Information</a>
+    <a href="#">Privacy Policy</a>
+    <a href="#">Terms &amp; Conditions</a>
+    <a href="#">Contact Us</a>
+    </div>
+    <div class="col">
+    <h4>My Account</h4>
+    <a href="#">Sign In</a>
+    <a href="#">View Cart</a>
+    <a href="#">My Wishlist</a>
+    <a href="#">Track My Order</a>
+    <a href="#">Help</a>
+    </div>
+    <div class="col install">
+    <h4>Install App</h4>
+    <p>From App store or Google Play</p>
+    <div class="row">
+    <img src="image/app-store.png" width="200px"/>
+    <img src="image/play-store.png" width="200px"/>
+    </div>
+    <p>Secured Payement Gateways</p>
+    <img alt="" src="image/payment-img.png"/>
+    </div>
+    <div class="copyright">
+    <p> ©2025,Indistyle Ecommerce website</p>
+    </div>
+    </footer>
+
+<script src="script.js"></script>
+
+<script>
+// Display the cart items in checkout
+const cart = JSON.parse(localStorage.getItem('cart')) || [];
+const checkoutItems = document.getElementById('checkout-items');
+if (checkoutItems) {
+  let grandTotal = 0;
+  cart.forEach(item => {
+    const subtotal = item.price * item.quantity;
+    grandTotal += subtotal;
+    checkoutItems.innerHTML += `
+      <tr>
+        <td>${item.name}</td>
+        <td>${item.quantity}</td>
+        <td>${subtotal} $</td>
+      </tr>
+    `;
+  });
+  checkoutItems.innerHTML += `
+    <tr>
+      <td><strong>Total</strong></td>
+      <td></td>
+      <td><strong>${grandTotal} $</strong></td>
+    </tr>
+  `;
+}
+
+// Handle checkout form submission
+const checkoutForm = document.getElementById('checkout-form');
+
+checkoutForm.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const address = document.getElementById('address').value;
+  const phone = document.getElementById('phone').value;
+  const paymentMethod = document.getElementById('payment-method').value;
+
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  if (cart.length === 0) {
+    alert('Your cart is empty !');
+    return;
+  }
+
+  // Create an order
+  const order = {
+    id: Date.now(), // Unique ID based on timestamp
+    customer: {
+      name: name,
+      address: address,
+      phone: phone,
+      paymentMethod: paymentMethod
+    },
+    items: cart,
+    total: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+    orderDate: new Date().toLocaleString()
+  };
+
+  // Retrieve existing orders
+  let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+  // Add the new order
+  orders.push(order);
+
+  // Save all orders back to localStorage
+  localStorage.setItem('orders', JSON.stringify(orders));
+
+  // Clear the cart
+  localStorage.removeItem('cart');
+
+  // Confirmation message
+  alert('Thank you for your order! 🛍️ Your order has been saved.');
+
+  // Redirect to home page
+  window.location.href = 'home.html';
+  
+});
+
+</script>
+
+</body>
+</html>

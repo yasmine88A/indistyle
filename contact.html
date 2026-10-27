@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INDISTYLE </title>
+    <link rel ="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  </head>
+<body>
+
+<section id="header">
+
+  <a href="#"><img src ="image/logo3.jpg"    width="70px"></a>
+  
+<div>
+<ul id ="navbar">
+  <li> <a  href ="home.html">Home</a></li>
+  <li> <a  href ="product.html">Product</a></li>
+  <li> <a  href ="about.html">About</a></li>
+  <li> <a  class ="active" href ="contact.html">Contact</a></li>
+  <li> <a  href ="login.html">Login</a></li>
+<a href="cart.html"><i class='bx bxs-cart-alt' ></i></a>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<section id="page-header" class="contact-header">
+  <h2>#Contact Us</h2>
+  <p>We'd love to hear from you! Reach out to us for any queries or concerns.</p>
+</section>
+
+
+<section id="contact-details" class="section-p1">
+  <div class="details">
+      <span>GET IN TOUCH</span>
+      <h2> Visit one of our agency locations or contact us today</h2>
+      <h3>Head office</h3>
+      <div>
+        <li>
+          <i class='bx bx-map-alt'></i>
+          <p> 107 Rue Al Bakri Casblanca 20250</p>
+        </li>
+        <li>
+          <i class='bx bx-envelope'></i>
+          <p>info@indistyle.com</p>
+        </li>
+        <li>
+          <i class='bx bxs-phone'></i>
+          <p>  +212 5224 50303</p>
+        </li>
+        <li>
+          <i class='bx bx-time'></i>
+          <p>10:00 -18:00, Mon -sat</p>
+        </li>
+      </div>
+  </div>
+  <div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.5249573099395!2d-7.604647399999999!3d33.5916813!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd6417161609%3A0x8c992a14ea7ab284!2sRue%20Al%20Bakri%2C%20Casablanca%2020250!5e0!3m2!1sfr!2sma!4v1744482063647!5m2!1sfr!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+</section>
+
+<section id="form-details">
+  <form id="contact-form">
+    <span>LEAVE A MESSAGE</span>
+    <h2>We love to hear from you</h2>
+    <input type="text" id="contact-name" placeholder="Your Name" required>
+    <input type="email" id="contact-email" placeholder="Your Email" required>
+    <input type="text" id="contact-subject" placeholder="Subject" required>
+    <textarea id="contact-message" cols="30" rows="10" placeholder="Your Message" required></textarea>
+    <button class="normal" type="submit">Submit</button>
+  </form>
+  
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="section-p1">
+<div class="col">
+  <img  class ="logo"src="image/logo3.jpg" width="65px">
+  <h4>Contact</h4>
+  <p><strong>Adress:</strong>  107 Rue Al Bakri Casblanca 20250</p>
+<p><strong>Phone:</strong>+212 5224 50303</p>
+<p><strong>Hours:</strong>10:00 -18:00, Mon -sat</p>
+<div class="follow">
+  <h4>Follow us</h4>
+<div class="icon">
+<i class='bx bxl-facebook' ></i>
+<i class='bx bxl-twitter' ></i>
+<i class='bx bxl-instagram' ></i>
+<i class='bx bxl-pinterest'></i>
+<i class='bx bxl-youtube' ></i>
+</div>
+</div>
+</div>
+<div class="col">
+  <h4>About</h4>
+<a href="#">About Us</a>
+<a href="#">Delivery Information</a>
+<a href="#">Privacy Policy</a>
+<a href="#">Terms & Conditions</a>
+<a href="#">Contact Us</a>
+</div>
+<div class="col">
+  <h4>My Account</h4>
+<a href="#">Sign In</a>
+<a href="#">View Cart</a>
+<a href="#">My Wishlist</a>
+<a href="#">Track My Order</a>
+<a href="#">Help</a>
+</div>
+<div class ="col install">
+  <h4>Install App</h4>
+  <p>From App store or Google Play</p>
+<div class="row">
+    <img src="image/app-store.png" width="200px">
+<img src="image/play-store.png" width="200px">
+</div>
+  <p>Secured Payement Gateways</p>
+  <img src="image/payment-img.png" alt="">
+
+</div>
+<div class="copyright">
+  <p> &copy;2025,Indistyle Ecommerce website</p>
+</div>
+
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+
+    if (form) {
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("contact-name").value.trim();
+        const email = document.getElementById("contact-email").value.trim();
+        const subject = document.getElementById("contact-subject").value.trim();
+        const message = document.getElementById("contact-message").value.trim();
+
+        const entry = {
+          name,
+          email,
+          subject,
+          message,
+          date: new Date().toLocaleString()
+        };
+
+        const messages = JSON.parse(localStorage.getItem("contactMessages")) || [];
+        messages.push(entry);
+        localStorage.setItem("contactMessages", JSON.stringify(messages));
+
+        alert("Message envoyé avec succès !");
+        form.reset();
+      });
+    }
+  });
+</script>
+
+    <script src="script.js"></script>
+
+
+
+</body>
+</html>
